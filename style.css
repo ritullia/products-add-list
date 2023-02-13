@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-padding: 15%;
+  --min-padding: 50px;
+  --main-color: rgb(124, 39, 24);
+  --main-hover-color: rgb(206, 62, 36);
+}
+
+header {
+  padding: 40px var(--main-padding);
+  color: white;
+  background-color: var(--main-color);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  padding: 40px var(--main-padding) 0 var(--main-padding);
+  padding-right: 13%;
+}
+
+#add-product {
+  background-color: var(--main-color);
+  border-color: white;
+  border-style: solid;
+  width: 80px;
+  border-width: 1px;
+  padding: 8px;
+  border-radius: 4px;
+  width: 120px;
+  color: white;
+  margin-top: 15px;
+}
+
+#products-wrapper {
+  display: grid;
+  grid-template-columns: repeat(6, 4fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+}
+.product-card {
+  border: 1px solid rgb(197, 197, 197);
+  display: flex;
+  width: 220px;
+  height: 350px;
+  flex-direction: column;
+  margin-top: 10px;
+  box-shadow: 0px 3px 5px #c5c5c5;
+}
+.product-card > img {
+  max-width: 100%;
+  max-height: 50%;
+  object-fit: contain;
+}
+.product-img {
+  display: flex;
+  align-items: center;
+}
+.products-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 20px;
+}
+
+.title-text {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.price-wrapper {
+  margin-top: 10px;
+  font-size: 28px;
+  color: var(--main-color);
+}
+
+.button-wrapper{
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-delete {
+  background-color: var(--main-color);
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  padding: 8px;
+  border-radius: 4px;
+  width: 100px;
+  color: white;
+  margin-top: 15px;
+}
+.btn-delete:hover {
+  background-color: var(--main-hover-color);
+}
+
+#products-add-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 18rem;
+  padding: 20px 5px;
+}
+
+#products-add-wrapper > input {
+  margin-top: 3px;
+  padding: 5px;
+}
+#products-add-wrapper > label {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+main > button {
+  background-color: var(--main-color);
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  padding: 8px;
+  border-radius: 4px;
+  width: 100px;
+  color: white;
+  margin-top: 15px;
+}
