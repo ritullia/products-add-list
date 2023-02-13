@@ -94,7 +94,7 @@ main {
   border-radius: 4px;
   width: 100px;
   color: white;
-  margin-top: 24                                                                                                                                                 px;
+  margin-top: 20px;
 }
 .btn-delete:hover {
   background-color: var(--main-hover-color);
