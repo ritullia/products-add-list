@@ -1,7 +1,7 @@
-console.log('veikia')
+console.log("veikia");
 
-// fetch(baseURL + "/1", { 
-//     method: "DELETE", 
+// fetch(baseURL + "/1", {
+//     method: "DELETE",
 // });
 
 // Base URL = https://golden-whispering-show.glitch.me//
@@ -10,76 +10,71 @@ console.log('veikia')
 //3. Padarykite, kad paspaudus delete mygtuką - back-end'ui būtų išsiunčiamas Fetch Delete Request (baseURL + /:id). T.y. į url turėsite paduoti produkto ID parametrą (pvz.: DELETE baseURL/1 ištrins pirmą įrašą).
 //4. Padarykite, kad ištrynus produktą - puslapis persikrautų. Taip nėra labai efektyvu - pagalvokite, kokiais kitais būdais galima būtų pasiekti šį rezultatą? Hint: gavus success message iš back-end'o filtruoti duomenis ir ištrinti su front-end'u irgi.
 
-let baseURL = 'https://golden-whispering-show.glitch.me//'
+let baseURL = "https://golden-whispering-show.glitch.me//";
 
 let data;
 
 fetch(baseURL)
-    .then(response => response.json())
-    .then(result => {
-        console.log(result)
-        data = result; //susigrazinam kintamaji
-        drawCards(result) // paleidziame funkcija i fetch duomen pasiemimui
-    })
-    .catch((error) => console.error(error));
-
+  .then((response) => response.json())
+  .then((result) => {
+    console.log(result);
+    data = result; //susigrazinam kintamaji
+    drawCards(result); // paleidziame funkcija i fetch duomen pasiemimui
+  })
+  .catch((error) => console.error(error));
 
 function drawCards(dataArr) {
-    let mainCard = document.getElementById('products-wrapper')
+  let mainCard = document.getElementById("products-wrapper");
 
+  dataArr.forEach((data) => {
+    let card = document.createElement("div");
+    card.classList.add("product-card");
 
-    dataArr.forEach((data) => {
+    let image = document.createElement("img");
+    image.src = data.image;
+    image.classList.add("product-img");
 
-        let card = document.createElement('div');
-        card.classList.add('product-card')
+    let productText = document.createElement("div");
+    productText.classList.add("products-text-wrapper");
 
-        let image = document.createElement('img')
-        image.src = data.image;
-        image.classList.add('product-img')
+    let title = document.createElement("p");
+    title.classList.add("title-text");
+    title.textContent = data.title;
 
-        let productText = document.createElement('div');
-        productText.classList.add('products-text-wrapper');
+    let price = document.createElement("h3");
+    price.classList.add("price-wrapper");
+    price.textContent = data.price + ` €`;
 
-        let title = document.createElement('p');
-        title.classList.add('title-text')
-        title.textContent = data.title;
-
-        let price = document.createElement('h3');
-        price.classList.add('price-wrapper')
-        price.textContent = data.price + ` €`;
-
-        let delBtnDiv = document.createElement('div')
-        delBtnDiv.classList.add('button-wrapper')
-        let delBtn = document.createElement('button')
-        delBtn.classList.add('btn-delete')
-        delBtn.textContent = "Delete";
-        delBtn.addEventListener('click', () => {
-            fetch(baseURL + "./" + data.id, {
-                method: "DELETE"
-            }
-            ).then((response) => { response.json() })
-                .then((result) =>
-                    alert(result),
-                    location.reload()
-                )
-            // card.remove()
+    let delBtnDiv = document.createElement("div");
+    delBtnDiv.classList.add("button-wrapper");
+    let delBtn = document.createElement("button");
+    delBtn.classList.add("btn-delete");
+    delBtn.textContent = "Delete";
+    delBtn.addEventListener("click", () => {
+      fetch(baseURL + "/" + data.id, {
+        method: "DELETE",
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          alert(result);
+          location.reload();
         })
 
-        delBtnDiv.append(delBtn)
-        console.log(data.id)
+        .catch((error) => console.error(error));
+      // card.remove()
+    });
 
-        productText.append(title, price, delBtnDiv)
+    delBtnDiv.append(delBtn);
+    console.log(data.id);
 
-        card.append(image, productText)
+    productText.append(title, price, delBtnDiv);
 
-        mainCard.append(card)
+    card.append(image, productText);
 
-
-    })
+    mainCard.append(card);
+  });
 }
 
-
-
 document.getElementById("add-product").addEventListener("click", () => {
-    window.location.href = "addproduct.html";
+  window.location.href = "addproduct.html";
 });
